@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+				<title>Scientific Calculator</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+			
+		<style type="text/css">
+		
+		#wantsPadding{
+						padding:80px;
+						color:red;
+						
+					
+					}
+		#calcBox{
+				border: 1px solid black;
+				padding-right: 30px;
+				background-color: #DDDDDD;
+				
+		}
+		
+		#putCenter{
+					position:relative;
+					
+					
+		}
+		#displayBox{
+					text-align:right;
+					}
+		
+		
+		</style>
+		
+	</head>
+	
+	<body onLoad="refresh()">
+		<div class="container" >
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-4"></div>
+				<div class="col-md-4 col-sm-4 col-xs-4">
+					<div id="wantsPadding">
+					Scientific Calculator
+					</div>					
+				</div>
+				<div class="col-md-4 col-sm-4 col-xs-4"></div>			
+			</div>
+			
+			<div class = "row" >
+				<div class="col-md-4 col-sm-4 col-xs-4"></div>
+				<div class="col-md-4 col-sm-4 col-xs-4" id="calcBox" >
+						
+					
+						<div class="row"><br/><br/><br/></div>
+						
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<input type="text"  id="displayBox" class="form-control" value="0" disabled/>
+							</div>
+							
+						</div>
+						<div class="row"><br /></div>
+						<div class="row">
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(1)" > sin </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick = "callmethod(2)"> cos </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(3)"> tan </button>
+							</div>
+							
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(4)" > asin </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(5)" > acos </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(6)" >atan</button>
+							</div>
+						
+						</div>
+						
+						<div class="row"> <br /> </div>
+						
+						<div class="row">
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default" onclick="callmethod(7)" >log<sub>10</sub> </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick = "callmethod(8)"> ln </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(9)"> e<sup>x</sup> </button>
+							</div>
+							
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(10)" > x! </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callmethod(11)" > x<sup>y</sup> </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-warning btn-md" onclick="callmethod('ans')" > Ans</button>
+							</div>
+						
+						</div>
+						
+						
+						<div class="row" ><br/> </div>
+						<div class="row" >
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('(')"> ( </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-danger btn-md" onclick="clearlast()"> C </button>
+							</div>
+							
+						</div>
+						
+						
+						<div class="row"> <br /> </div>
+						
+						<div class="row"> 
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('1')" > 1 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('2')" > 2 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('3')" > 3 </button>
+							</div>
+							
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-block" onclick="put('*')" ><b><b>* </b></b></button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-block" onclick="put('/')" > / </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-info btn-md" onclick="allclear()" > AC </button>
+							</div>
+						</div>
+						
+						<div class="row"> <br /> </div>
+						
+						<div class="row">
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('4')" > 4 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('5')" > 5 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('6')" > 6 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2"> 
+								<button type="button" class="btn btn-default btn-block" onclick="put('+')" > + </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-block" onclick="put('-')" > - </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2" > 
+								<button type="button" class="btn btn-default btn-block" onclick="put(')')" > ) </button>	
+							</div>
+						</div>
+						
+						<div class="row"> <br /> </div>
+						<div class="row">
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('7')" > 7 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('8')" > 8 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('9')" > 9 </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put('0')" > 0 </button>	
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-block" onclick="put('.')" > . </button>	
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-success btn-block" onclick="functionText+=')';compute();" >&#8626; </button>	
+							</div>
+							
+						</div>
+						
+				<!-- last row -->		
+				<div class="col-md-4 col-sm-4"> <br /> </div>			
+				</div>
+			
+			<div class="row">
+			</div>
+		</div>	
+		
+		<script>
+		
+/*needed 
+compute function
+if i press the compute button without input 
+
+*/
+		
+			var displayText = " "; //text that is displayed
+			var functionText = ""; //text on which the operations happen
+			var ans = 0; //last answer
+			
+			function refresh()
+			{
+				displayText = "0";
+				functionText = "";
+				document.getElementById("displayBox").value = displayText;
+			}
+			
+			
+			function allclear()
+			{
+				displayText = "0";
+				functionText = "0";
+				document.getElementById("displayBox").value = displayText;
+			}
+			
+			function clearlast(){
+				
+				var lengthDisplayText = displayText.length;
+				var lengthFunctionText = functionText.length;
+				var counter = 0;
+				
+				var functionArr = functionText.split("");
+				var displayArr = displayText.split("");
+				var replaceString = "";
+				
+				try{
+
+					//not remove '(' from the functionText
+					if(lengthFunctionText == 1)
+						return;
+
+					//to remove factorial
+					if(displayText[lengthDisplayText-1] == '!')
+					{
+				
+						for(counter = lengthFunctionText-1; counter>=0; counter--)
+							if(functionArr[counter] == ',')
+								break;
+						
+						//remove ,( and ) from around the characters 
+						for(var counter2 = counter+2; counter2<lengthFunctionText-2; counter2++)
+							replaceString += functionArr[counter2];
+						
+						//remake the string ater removing ,( and )
+						functionText = functionText.substring(0,counter) + replaceString;
+						//remove ! symbol
+						displayText = displayText.substring(0,lengthDisplayText-1);
+					}
+					
+					else if(displayText.substring(lengthDisplayText-3,lengthDisplayText) === "ans")
+					{
+		
+						displayText=displayText.substring(0,lengthDisplayText-3);
+						
+						var ansString = ans.toString();
+						functionText = functionText.substring(0,lengthFunctionText-ansString.length());			
+					}
+					
+					//to remove function names eg. sin ,cos and digits and operators
+					else{
+
+						switch(functionText[lengthFunctionText-1])
+						{
+							
+							case '~': displayText=displayText.substring(0,lengthDisplayText-3);
+								break;
+							case '`': displayText=displayText.substring(0,lengthDisplayText-3);
+								break;
+							case '@': displayText=displayText.substring(0,lengthDisplayText-3);
+								break;
+							case '#': displayText=displayText.substring(0,lengthDisplayText-4);
+								break;
+							case '$': displayText=displayText.substring(0,lengthDisplayText-4);
+								break;
+							case '%': displayText=displayText.substring(0,lengthDisplayText-4);
+								break;
+							case '_': displayText=displayText.substring(0,lengthDisplayText-3);
+								break;
+							case '|': displayText=displayText.substring(0,lengthDisplayText-2);
+								break;
+							case ':': displayText=displayText.substring(0,lengthDisplayText-2);	
+								break;
+							case '?': displayText=displayText.substring(0,lengthDisplayText-1);
+								break;
+								
+							//to remove other characters like numbers or operators
+							default: displayText=displayText.substring(0,lengthDisplayText-1);
+							
+						}
+						
+						functionText = functionText.substring(0,lengthFunctionText-1);
+					}
+					
+					//display the text
+					document.getElementById("displayBox").value = functionText;
+				}catch(err)
+				{document.write("error in clearlast");}
+				
+			}
+			
+			function put(character)
+			{
+					try{
+					//if entering the numbers first time
+					if(displayText == "0" && character != ".")
+						{
+							displayText = "";
+							functionText = "(";
+						}
+						
+					displayText += character;
+					if(character != "!" && character.length === 1)
+					{
+						functionText += character;
+					}
+						
+					document.getElementById("displayBox").value = functionText;
+					}catch(err)
+					{
+						document.getElementById("wantsPadding").innerHTML = err;
+					}
+			}		
+			
+			function callmethod(key)
+			{
+				switch(key)
+					{
+						case 1: put("sin(");
+								functionText += "~(";
+							break;
+						case 2: put("cos(");
+								functionText += "`(";
+							break;
+						case 3: put("tan(");
+								functionText += "@(";
+							break;
+						case 4: put("asin(")
+								functionText += "#(";
+							break;
+						case 5: put("acos(");
+								functionText += "$(";
+							break;
+						case 6: put("atan(");
+								functionText += "%(";
+							break;
+						case 7: put("log(");
+								functionText += "_(";
+							break;
+						case 8: put("ln(");
+								functionText += "|(";
+							break;
+						case 9: put("e^(");	
+								functionText += ":(";
+							break;
+						case 10: put("!"); //, is the char key
+								putfactorial();
+							break;
+						case 11: put("^(");
+								functionText += "?(";
+							break;
+						case "ans": put("ans");
+								functionText += ans;
+						
+					}
+			}
+			
+			function putfactorial(){
+			
+					var bracketCount=0;
+					var arr = functionText.split("");
+					var lengthArray = functionText.length;
+					try{
+						var counter = 0;
+						var replaceString2 = ",(";
+						
+						//if the last character is a digit then find the full no and replace the string
+						if(!isNaN(arr[lengthArray-1]))
+						{
+							for( counter = lengthArray-2; counter>=0; counter-- )
+							{
+								if(isNaN(arr[counter]))
+									break;	//break when the character is not a digit
+							}
+							
+							//make a string from the last character that was a digit to the last 
+							//counter +1 because the element at pos. counter is not a digit 
+							for(var counter2 = counter+1; counter2<=lengthArray-1; counter2++)
+								replaceString2 += arr[counter2];
+							
+							replaceString2 += ")";
+							
+							//remove the digits from the last and add the replaceString in the functionText
+							functionText = functionText.substring(0,counter+1) + replaceString2;
+							
+							
+						}
+						
+						else if(arr[lengthArray-1] == ')')
+							{
+								bracketCount++;
+								
+								for( counter = lengthArray-2; counter>=0; counter--)
+								{
+									if(arr[counter]==')')
+										bracketCount++;
+									else if(arr[counter]=='(')
+										bracketCount--;
+									else if(bracketCount==0)
+										break;
+								}
+								
+								//make a string from the character where brackets of the same level closed to the last 
+								//counter +1 because the element at pos. counter is one ahead where bracketCount became 0
+								for(var counter2 = counter+1; counter2<=lengthArray-1; counter2++)
+									replaceString2 += arr[counter2];								
+								
+								replaceString2 += ")";
+								
+								//remove the digits from the last and add the replaceString in the functionText
+								functionText = functionText.substring(0,counter+1) + replaceString2;
+								
+							}
+							
+						//if none of the two above cases then just put it so that either it can be deleted or produce an error on computation
+						else 
+							functionText += ",";
+							
+					}catch(err)
+					{
+						document.write("Error in put factorial");
+					}
+			}
+
+			/*Computation of the input starts here*/
+
+
+			var functionTextArray = [];
+			var resultString = "";
+			var pos; //to index the FunctionTextArray 
+
+			function compute()
+					{	
+						try{
+								
+								//functionTextArray = functionText.split("");
+								resultString = "";
+								//findLevel(0,"Nofunction");
+								//displayText = resultString;
+								
+						/*use stack to make posstfix expression and then evaluate*/
+						
+								functionText = "(" + resultString;
+								ans = parseInt(resultString);
+								document.getElementById("displayBox").value = ans;
+							
+							
+							}catch(err){
+									document.getElementById("displayBox").value = "Error";
+							}
+					}
+					/*
+				//split the function text and create anew string to store the results of individual brackets
+
+			function findLevel(startPos, hadFunction)
+			{
+				try{
+					var bracketString = "";
+
+					pos = startPos+1;
+					
+					while(true)				// the function returns when ')' is found no need for a condition to stop the loop	
+					{
+						//to check if the brackets inside this current bracket has a function or not 
+						var functionName = checkFunction(functionTextArray[pos]); 
+						
+						//if '(' is found call the findLevel function with the position of '(' and with the name of the function it has
+						if(functionName !== "Nofunction")
+							findLevel(pos+1,functionName);
+							
+						//if the corresponding ')' is found then evaluate the inside of the bracket
+						else if(functionTextArray[pos] == ')')
+							{
+								for( var counter = startPos; counter<=pos; counter++)
+									bracketString += functionTextArray[counter];
+								
+								var ansBracket = eval(bracketString);
+							
+								//if there is a function associated with the bracket pair then apply that fuunction and then append that value to resultString
+								if(hadFunction != "Nofunction")
+									ansBracket = applyFunction(ansBracket,hadFunction);
+
+								resultString += ansBracket;
+								return;
+							}
+
+						bracketString += functionTextArray[pos];
+						pos++;
+					}		
+				}catch(err)
+				{
+					document.getElementById("displayBox").value = "Error";
+				}
+			}*/
+
+			function checkFunction(value)
+			{
+				switch(value){
+							
+							case '~': return '~';
+								break;
+							case '`': return '`';
+								break;
+							case '@': return '@';
+								break;
+							case '#': return '#';
+								break;
+							case '$': return '$';
+								break; 
+							case '%': return '%';
+								break;
+							case '_': return '_';
+								break;
+							case '|': return '|';
+								break;
+							case ':': return ':';
+								break;	
+							case '?': return '?';
+								break;
+
+							default: 
+								return "Nofunction"; 							
+				}
+			}
+
+			function  applyFunction(ansBracket,functionName)
+			{
+				try{
+					switch(functionName)
+					{
+						case '~': ansBracket = Math.sin(ansBracket);
+							break;
+						case '`': ansBracket = Math.cos(ansBracket);
+							break;
+						case '@': ansBracket = Math.tan(ansBracket)
+							break;
+						case '#': ansBracket = Math.asin(ansBracket);
+							break;
+						case '$': ansBracket = Math.acos(ansBracket);
+							break; 
+						case '%': ansBracket = Math.atan(ansBracket);
+							break;
+						case '_': ansBracket = Math.log(ansBracket)*2.303;
+							break;
+						case '|': ansBracket = Math.log(ansBracket);
+							break;
+						case ':': ansBracket = Math.exp(ansBracket);
+							break;	
+						case '?':
+							
+							//find the number whose power the user wants to find
+							var counter = resultString.length - 1; 
+							
+							//find the string whose power is to be determined
+							while(!isNaN(resultString[counter]))
+							{
+								numberString = resultString[counter];
+								counter--;
+							}
+							//reverse the string as it was read in reverse order 72 was read as 27
+							numberString = numberString.reverse();
+							var num = parseInt(numberString);
+							ansBracket = Math.pow(num,ansBracket);
+							break;
+
+						default: throw "invalid function selected";
+					
+				}
+
+				}catch(err){
+					document.getElementById("displayBox").value = err;
+				}
+				
+				return ansBracket;
+			}
+		
+		</script>		
+		
+		
+	</body>
+
+
+</html>
