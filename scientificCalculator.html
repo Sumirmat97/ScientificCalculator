@@ -80,23 +80,23 @@
 						<div class="row"><br /></div>
 						<div class="row">
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(1)" > sin </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(1)" > sin </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick = "callmethod(2)"> cos </button>
+								<button type="button" class="btn btn-default btn-md" onclick = "callMethod(2)"> cos </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(3)"> tan </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(3)"> tan </button>
 							</div>
 							
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(4)" > asin </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(4)" > asin </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(5)" > acos </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(5)" > acos </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(6)" >atan</button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(6)" >atan</button>
 							</div>
 						
 						</div>
@@ -105,23 +105,23 @@
 						
 						<div class="row">
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default" onclick="callmethod(7)" >log<sub>10</sub> </button>
+								<button type="button" class="btn btn-default" onclick="callMethod(7)" >log<sub>10</sub> </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick = "callmethod(8)"> ln </button>
+								<button type="button" class="btn btn-default btn-md" onclick = "callMethod(8)"> ln </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(9)"> e<sup>x</sup> </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(9)"> e<sup>x</sup> </button>
 							</div>
 							
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(10)" > x! </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(10)" > x! </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callmethod(11)" > x<sup>y</sup> </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(11)" > x<sup>y</sup> </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-warning btn-md" onclick="callmethod('ans')" > Ans</button>
+								<button type="button" class="btn btn-warning btn-md" onclick="callMethod('ans')" > Ans</button>
 							</div>
 						
 						</div>
@@ -133,7 +133,7 @@
 								<button type="button" class="btn btn-default btn-md" onclick="put('(')"> ( </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-danger btn-md" onclick="clearlast()"> C </button>
+								<button type="button" class="btn btn-danger btn-md" onclick="clearLast()"> C </button>
 							</div>
 							
 						</div>
@@ -159,7 +159,7 @@
 								<button type="button" class="btn btn-default btn-block" onclick="put('/')" > / </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-info btn-md" onclick="allclear()" > AC </button>
+								<button type="button" class="btn btn-info btn-md" onclick="allClear()" > AC </button>
 							</div>
 						</div>
 						
@@ -237,14 +237,14 @@ if i press the compute button without input
 			}
 			
 			
-			function allclear()
+			function allClear()
 			{
 				displayText = "0";
 				functionText = "";
 				document.getElementById("displayBox").value = displayText;
 			}
 			
-			function clearlast(){
+			function clearLast(){
 				
 				var lengthDisplayText = displayText.length;
 				var lengthFunctionText = functionText.length;
@@ -360,7 +360,7 @@ if i press the compute button without input
 					}
 			}		
 			
-			function callmethod(key)
+			function callMethod(key)
 			{
 				switch(key)
 					{
@@ -392,7 +392,7 @@ if i press the compute button without input
 								functionText += ":(";
 							break;
 						case 10: put("!"); //, is the char key
-								putfactorial();
+								putFactorial();
 							break;
 						case 11: put("^(");
 								functionText += "?(";
@@ -405,7 +405,7 @@ if i press the compute button without input
 					document.getElementById("displayBox").value = functionText;
 			}
 			
-			function putfactorial(){
+			function putFactorial(){
 			
 					var bracketCount=0;
 					var arr = functionText.split("");
