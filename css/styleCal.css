@@ -1,0 +1,18 @@
+#wantsPadding{
+				padding:80px;
+				color:red;		
+			}
+#calcBox{
+		border: 1px solid black;
+		padding-right: 30px;
+		background-color: #DDDDDD;
+}
+
+#putCenter{
+			position:relative;
+}
+#displayBox{
+			text-align:right;
+			}
+
+
