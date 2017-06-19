@@ -240,7 +240,7 @@ if i press the compute button without input
 			function allclear()
 			{
 				displayText = "0";
-				functionText = "0";
+				functionText = "";
 				document.getElementById("displayBox").value = displayText;
 			}
 			
@@ -257,7 +257,7 @@ if i press the compute button without input
 				try{
 
 					//not remove '(' from the functionText
-					if(lengthFunctionText == 1)
+					if(lengthFunctionText <= 1)
 						return;
 
 					//to remove factorial
@@ -269,7 +269,7 @@ if i press the compute button without input
 								break;
 						
 						//remove ,( and ) from around the characters 
-						for(var counter2 = counter+2; counter2<lengthFunctionText-2; counter2++)
+						for(var counter2 = counter+2; counter2<=lengthFunctionText-2; counter2++)
 							replaceString += functionArr[counter2];
 						
 						//remake the string ater removing ,( and )
@@ -284,7 +284,7 @@ if i press the compute button without input
 						displayText=displayText.substring(0,lengthDisplayText-3);
 						
 						var ansString = ans.toString();
-						functionText = functionText.substring(0,lengthFunctionText-ansString.length());			
+						functionText = functionText.substring(0,lengthFunctionText-ansString.length);			
 					}
 					
 					//to remove function names eg. sin ,cos and digits and operators
@@ -325,7 +325,11 @@ if i press the compute button without input
 					//display the text
 					document.getElementById("displayBox").value = functionText;
 				}catch(err)
-				{document.write("error in clearlast");}
+				{
+				document.getElementById("wantsPadding").innerHTML = err;
+				
+				//document.write("error in clearlast");
+				}
 				
 			}
 			
@@ -333,12 +337,16 @@ if i press the compute button without input
 			{
 					try{
 					//if entering the numbers first time
-					if(displayText == "0" && character != ".")
-						{
-							displayText = "";
-							functionText = "(";
-						}
-						
+					if(displayText == "0" && character != '.')
+					{
+						displayText = "";
+						functionText = "(";
+					}
+					else if(displayText == "0" && character == '.')
+					{
+						displayText += ".";
+						functionText += "(0";
+					}
 					displayText += character;
 					if(character != "!" && character.length === 1)
 					{
@@ -393,6 +401,8 @@ if i press the compute button without input
 								functionText += ans;
 						
 					}
+					//remove this 
+					document.getElementById("displayBox").value = functionText;
 			}
 			
 			function putfactorial(){
