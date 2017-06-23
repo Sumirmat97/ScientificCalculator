@@ -4,7 +4,7 @@ function allClear()
 {
 	displayText = "0";
 	functionText = "";
-	document.getElementById("displayBox").value = displayText;
+	document.getElementById("displayBox").value = functionText;
 }
 
 function clearLast(){

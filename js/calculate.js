@@ -1,71 +1,92 @@
 
-var functionTextArray = [];
 var resultString = "";
-var pos; //to index the FunctionTextArray 
+
+function precedence(ch)
+{
+	switch(ch)
+	{
+		case '+':
+		case '-': return 0;
+		case '*': 
+		case '/': return 1;
+		case '(': return -1;
+		default:
+			return 2;
+	}
+}
+function calculate(exp)
+{
+	
+}
 
 function compute()
-		{	
-			try{
-					
-					//functionTextArray = functionText.split("");
-					resultString = "";
-					//findLevel(0,"Nofunction");
-					//displayText = resultString;
-					
-			/*use stack to make posstfix expression and then evaluate*/
-			
-					functionText = "(" + resultString;
-					ans = parseInt(resultString);
-					document.getElementById("displayBox").value = ans;
-				
-				
-				}catch(err){
-						document.getElementById("displayBox").value = "Error";
-				}
-		}
-		/*
-	//split the function text and create anew string to store the results of individual brackets
-
-function findLevel(startPos, hadFunction)
-{
+{	
 	try{
-		var bracketString = "";
-
-		pos = startPos+1;
 		
-		while(true)				// the function returns when ')' is found no need for a condition to stop the loop	
-		{
-			//to check if the brackets inside this current bracket has a function or not 
-			var functionName = checkFunction(functionTextArray[pos]); 
+		debugger;
+			var stck = [];
+			var postfixExp = "";
 			
-			//if '(' is found call the findLevel function with the position of '(' and with the name of the function it has
-			if(functionName !== "Nofunction")
-				findLevel(pos+1,functionName);
-				
-			//if the corresponding ')' is found then evaluate the inside of the bracket
-			else if(functionTextArray[pos] == ')')
+			for(var i = 0; i < functionText.length; i++) 
+			{
+				var ch = functionText.charAt(i);	
+				if(ch == '(')
 				{
-					for( var counter = startPos; counter<=pos; counter++)
-						bracketString += functionTextArray[counter];
-					
-					var ansBracket = eval(bracketString);
-				
-					//if there is a function associated with the bracket pair then apply that fuunction and then append that value to resultString
-					if(hadFunction != "Nofunction")
-						ansBracket = applyFunction(ansBracket,hadFunction);
-
-					resultString += ansBracket;
-					return;
+					stck.push(ch);
 				}
-
-			bracketString += functionTextArray[pos];
-			pos++;
-		}		
-	}catch(err)
-	{
-		document.getElementById("displayBox").value = "Error";
-	}
-}*/
+				else if(!isNaN(ch) || ch == '.')
+				{
+					var str = "";
+					var j=0;
+					str += ch;
+					for(j = i+1; j < functionText.length ; j++)
+					{
+						ch = functionText.charAt(j);
+						if(!isNaN(ch) || ch == '.')
+						{
+							str += ch;
+						}
+						else
+							break;
+					}
+					postfixExp += str + " ";
+					i = j-1;
+				}
+				else if(ch == ')')
+				{
+					while(stck.length != 0 && stck[stck.length - 1] != '(')
+						postfixExp += stck.pop() + " ";
+					
+					if(stck.length != 0 && stck[stck.length -1] != '(' )
+						throw "brackets not matching";
+					else
+						stck.pop();
+				}
+				else
+				{
+					while(stck.length != 0 && precedence(ch) <= precedence(stck[stck.length - 1]))
+						stck.pop();
+					
+					stck.push(ch);
+				}	
+			}
+			while(stck.length != 0)
+			{
+				postfixExp += stck.pop() + " ";
+			}
+			
+			calulate(postfixExp);
+			
+			/* return postfix expression to evaluate it */
+			functionText = "(" + resultString;
+			ans = parseInt(resultString);
+			document.getElementById("displayBox").value = ans;
+		
+		
+		}catch(err){
+				document.getElementById("displayBox").value = err;
+		}
+}
 
 function checkFunction(value)
 {
@@ -97,7 +118,7 @@ function checkFunction(value)
 	}
 }
 
-function  applyFunction(ansBracket,functionName)
+function applyFunction(ansBracket,functionName)
 {
 	try{
 		switch(functionName)
