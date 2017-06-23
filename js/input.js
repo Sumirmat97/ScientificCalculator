@@ -19,7 +19,7 @@ function put(character)
 			functionText += character;
 		}
 			
-		document.getElementById("displayBox").value = functionText;
+		document.getElementById("displayBox").value = displayText;
 		}catch(err)
 		{
 			document.getElementById("wantsPadding").innerHTML = err;
@@ -61,14 +61,12 @@ function callMethod(key)
 					putFactorial();
 				break;
 			case 11: put("^(");
-					functionText += "?(";
+					functionText += "^(";
 				break;
 			case "ans": put("ans");
 					functionText += ans;
 			
 		}
-		//remove this 
-		document.getElementById("displayBox").value = functionText;
 }
 
 function putFactorial(){

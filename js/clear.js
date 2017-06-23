@@ -1,10 +1,9 @@
 
-
 function allClear()
 {
 	displayText = "0";
 	functionText = "";
-	document.getElementById("displayBox").value = functionText;
+	document.getElementById("displayBox").value = displayText;
 }
 
 function clearLast(){
@@ -74,7 +73,7 @@ function clearLast(){
 					break;
 				case ':': displayText=displayText.substring(0,lengthDisplayText-2);	
 					break;
-				case '?': displayText=displayText.substring(0,lengthDisplayText-1);
+				case '^': displayText=displayText.substring(0,lengthDisplayText-1);
 					break;
 					
 				//to remove other characters like numbers or operators
@@ -86,7 +85,7 @@ function clearLast(){
 		}
 		
 		//display the text
-		document.getElementById("displayBox").value = functionText;
+		document.getElementById("displayBox").value = displayText;
 	}catch(err)
 	{
 	document.getElementById("wantsPadding").innerHTML = err;
