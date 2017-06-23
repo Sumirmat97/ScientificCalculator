@@ -3,5 +3,9 @@ A scientific calulator made in HTML and JavaScript.
 
 * Bootstrap framework is also used.
 
+## How To Set Up ##
+* Download the project.
+* Run the file scientificCalculator.html
+
 ## To Do ##
-complete the compute function
+Input of negative numbers and scientific notation 
