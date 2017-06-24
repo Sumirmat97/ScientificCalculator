@@ -1,29 +1,29 @@
 
 function put(character)
 {
-		try{
-		//if entering the numbers first time
-		if(displayText == "0" && character != '.')
-		{
-			displayText = "";
-			functionText = "(";
-		}
-		else if(displayText == "0" && character == '.')
-		{
-			displayText += ".";
-			functionText += "(0";
-		}
-		displayText += character;
-		if(character != "!" && character.length === 1)
-		{
-			functionText += character;
-		}
-			
-		document.getElementById("displayBox").value = displayText;
-		}catch(err)
-		{
-			document.getElementById("wantsPadding").innerHTML = err;
-		}
+	try{
+	//if entering the numbers first time
+	if(displayText == "0" && character != '.')
+	{
+		displayText = "";
+		functionText = "(";
+	}
+	else if(displayText == "0" && character == '.')
+	{
+		//displayText += ".";
+		functionText = "(0";
+	}
+	displayText += character;
+	if(character != "!" && character.length === 1)
+	{
+		functionText += character;
+	}
+		
+	document.getElementById("displayBox").value = displayText;
+	}catch(err)
+	{
+		document.getElementById("wantsPadding").innerHTML = err;
+	}
 }		
 
 function callMethod(key)

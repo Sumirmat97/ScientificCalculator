@@ -117,6 +117,7 @@ function calculate(exp)
 function compute()
 {	
 	try{
+		//debugger;
 			var stck = [];
 			var postfixExp = "";
 			
