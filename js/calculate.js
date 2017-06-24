@@ -139,6 +139,16 @@ function compute()
 						{
 							str += ch;
 						}
+						else if(ch == 'e')
+						{
+							str += ch;
+							ch = functionText.charAt(j+1);
+							if(ch == "+" || ch == "-")
+							{
+								str += ch;
+								j++;
+							}
+						}
 						else
 							break;
 					}
@@ -168,6 +178,7 @@ function compute()
 				postfixExp += stck.pop() + " ";
 			}
 			
+			//document.write(postfixExp);
 			calculate(postfixExp);
 			
 		}catch(err){

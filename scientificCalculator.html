@@ -114,6 +114,10 @@
 								<button type="button" class="btn btn-default btn-md" onclick="put('(')"> ( </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="put(')')"> ) </button>
+							</div>
+							
+							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-danger btn-md" onclick="clearLast()"> C </button>
 							</div>
 							
@@ -163,7 +167,7 @@
 								<button type="button" class="btn btn-default btn-block" onclick="put('-')" > - </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2" > 
-								<button type="button" class="btn btn-default btn-block" onclick="put(')')" > ) </button>	
+								<button type="button" class="btn btn-default " onclick="put('')" >-ve </button>	
 							</div>
 						</div>
 						
@@ -185,7 +189,7 @@
 								<button type="button" class="btn btn-default btn-block" onclick="put('.')" > . </button>	
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-success btn-block" onclick="functionText+=')';compute();" >&#8626; </button>	
+								<button type="button" class="btn btn-success btn-md" onclick="functionText+=')';compute();" >&#8626; </button>	
 							</div>
 							
 						</div>
