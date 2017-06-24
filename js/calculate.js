@@ -20,9 +20,9 @@ function factorial(num)
 	
 	if(num == 0)
 		return fact;
-	for(var i=1; i<=num; i++)  
+	for(var i=1; i <= num; i++)  
 	{
-		fact = fact*i;
+		fact = fact * i;
 	}
 	return fact;
 }
@@ -103,6 +103,9 @@ function calculate(exp)
 		}
 		
 		ans = resultStack.pop()
+		
+		if(isNaN(ans))
+			throw "not an number";
 		resultString = ans.toString();
 		displayText = resultString;
 		functionText = "(" + resultString; 
@@ -128,8 +131,16 @@ function compute()
 				{
 					stck.push(ch);
 				}
-				else if(!isNaN(ch) || ch == '.')
+				else if(!isNaN(ch) || ch == '.' || ch == '-')
 				{
+					if(ch == '-' && functionText.charAt(i-1) == '(')
+					{
+						postfixExp += "-";
+					}
+					else if(ch == '-')
+					{
+						
+					}
 					var str = "";
 					var j=0;
 					str += ch;
@@ -169,7 +180,7 @@ function compute()
 				else
 				{
 					while(stck.length != 0 && precedence(ch) <= precedence(stck[stck.length - 1]))
-						stck.pop();
+						postfixExp += stck.pop();
 					
 					stck.push(ch);
 				}	
@@ -179,7 +190,7 @@ function compute()
 				postfixExp += stck.pop() + " ";
 			}
 			
-			//document.write(postfixExp);
+			//document.write(functionText+"::"+postfixExp);
 			calculate(postfixExp);
 			
 		}catch(err){

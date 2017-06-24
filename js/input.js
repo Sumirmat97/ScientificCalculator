@@ -10,7 +10,6 @@ function put(character)
 	}
 	else if(displayText == "0" && character == '.')
 	{
-		//displayText += ".";
 		functionText = "(0";
 	}
 	displayText += character;
