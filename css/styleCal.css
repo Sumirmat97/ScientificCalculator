@@ -6,6 +6,8 @@
 		border: 1px solid black;
 		padding-right: 30px;
 		background-color: #DDDDDD;
+		border-radius: 5px;
+		box-shadow: 5px 5px 5px #888888;
 }
 
 #putCenter{
