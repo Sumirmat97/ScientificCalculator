@@ -42,7 +42,7 @@ function calculatePop1(operation,resultStack)
 			case '#': resultStack.push(Math.asin(val)); break;
 			case '$': resultStack.push(Math.acos(val));	break; 
 			case '%': resultStack.push(Math.atan(val)); break;
-			case '_': resultStack.push(Math.log(val)*2.303); break;
+			case '_': resultStack.push(Math.log(val)/Math.log(10)); break;
 			case '|': resultStack.push(Math.log(val)); break;
 			case ':': resultStack.push(Math.exp(val));break;
 			case ',': resultStack.push(factorial(val));break;
