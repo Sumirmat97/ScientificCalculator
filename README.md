@@ -8,4 +8,4 @@ A scientific calulator made in HTML and JavaScript.
 * Run the file scientificCalculator.html
 
 ## To Do ##
-Input of negative numbers 
+Make it look better
