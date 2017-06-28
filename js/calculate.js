@@ -14,6 +14,7 @@ function precedence(ch)
 			return 2;
 	}
 }
+
 function factorial(num)
 {
 	var fact = 1;
@@ -26,6 +27,7 @@ function factorial(num)
 	}
 	return fact;
 }
+
 function calculatePop1(operation,resultStack)
 {
 	
@@ -106,9 +108,14 @@ function calculate(exp)
 		
 		if(isNaN(ans))
 			throw "not an number";
+		
 		resultString = ans.toString();
 		displayText = resultString;
-		functionText = "(" + resultString; 
+		
+		if(ans < 0)
+			functionText = "(N" + resultString.substring(1); //remove - sign from the result and put N in its place
+		else
+			functionText = "(" + resultString; 
 		document.getElementById("displayBox").value = displayText; 
 		
 	}catch(err)
@@ -131,19 +138,14 @@ function compute()
 				{
 					stck.push(ch);
 				}
-				else if(!isNaN(ch) || ch == '.' || ch == '-')
+				else if(!isNaN(ch) || ch == '.' || ch=='N')
 				{
-					if(ch == '-' && functionText.charAt(i-1) == '(')
-					{
-						postfixExp += "-";
-					}
-					else if(ch == '-')
-					{
-						
-					}
 					var str = "";
 					var j=0;
-					str += ch;
+					if(ch == 'N')
+						str += "-";
+					else
+						str += ch;
 					for(j = i+1; j < functionText.length ; j++)
 					{
 						ch = functionText.charAt(j);
@@ -190,7 +192,7 @@ function compute()
 				postfixExp += stck.pop() + " ";
 			}
 			
-			//document.write(functionText+"::"+postfixExp);
+			//document.getElementById("wantsPadding").innerHTML += (functionText+"::"+postfixExp);
 			calculate(postfixExp);
 			
 		}catch(err){

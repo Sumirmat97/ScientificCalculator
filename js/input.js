@@ -3,17 +3,22 @@ function put(character)
 {
 	try{
 	//if entering the numbers first time
-	if(displayText == "0" && character != '.')
+	if(functionText.length == 0 && character != '.')
 	{
 		displayText = "";
 		functionText = "(";
 	}
-	else if(displayText == "0" && character == '.')
+	else if(functionText.length == 0 && character == '.')
 	{
 		functionText = "(0";
 	}
-	displayText += character;
-	if(character != "!" && character.length === 1)
+	
+	if(character == 'N')
+		displayText += '-';
+	else
+		displayText += character;
+	
+	if(character != "!" && character.length === 1 )
 	{
 		functionText += character;
 	}
@@ -63,8 +68,7 @@ function callMethod(key)
 					functionText += "^(";
 				break;
 			case "ans": put("ans");
-					functionText += ans;
-			
+					functionText += ans;		
 		}
 }
 
