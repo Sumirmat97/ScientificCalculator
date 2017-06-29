@@ -3,6 +3,7 @@ function allClear()
 {
 	displayText = "0";
 	functionText = "";
+	ans = 0;
 	document.getElementById("displayBox").value = displayText;
 }
 
@@ -40,7 +41,7 @@ function clearLast(){
 			displayText = displayText.substring(0,lengthDisplayText-1);
 		}
 		
-		else if(displayText.substring(lengthDisplayText-3,lengthDisplayText) === "ans")
+		else if(displayText.substring(lengthDisplayText-3,lengthDisplayText) == "Ans")
 		{
 
 			displayText=displayText.substring(0,lengthDisplayText-3);
@@ -48,34 +49,35 @@ function clearLast(){
 			var ansString = ans.toString();
 			functionText = functionText.substring(0,lengthFunctionText-ansString.length);			
 		}
-		
 		//to remove function names eg. sin ,cos and digits and operators
 		else{
 
 			switch(functionText[lengthFunctionText-1])
 			{
 				
-				case '~': displayText=displayText.substring(0,lengthDisplayText-3);
+				case '~': displayText = displayText.substring(0,lengthDisplayText-3);
 					break;
-				case '`': displayText=displayText.substring(0,lengthDisplayText-3);
+				case '`': displayText = displayText.substring(0,lengthDisplayText-3);
 					break;
-				case '@': displayText=displayText.substring(0,lengthDisplayText-3);
+				case '@': displayText = displayText.substring(0,lengthDisplayText-3);
 					break;
-				case '#': displayText=displayText.substring(0,lengthDisplayText-4);
+				case '#': displayText = displayText.substring(0,lengthDisplayText-4);
 					break;
-				case '$': displayText=displayText.substring(0,lengthDisplayText-4);
+				case '$': displayText = displayText.substring(0,lengthDisplayText-4);
 					break;
-				case '%': displayText=displayText.substring(0,lengthDisplayText-4);
+				case '%': displayText = displayText.substring(0,lengthDisplayText-4);
 					break;
-				case '_': displayText=displayText.substring(0,lengthDisplayText-3);
+				case '_': displayText = displayText.substring(0,lengthDisplayText-3);
 					break;
-				case '|': displayText=displayText.substring(0,lengthDisplayText-2);
+				case '|': displayText = displayText.substring(0,lengthDisplayText-2);
 					break;
-				case ':': displayText=displayText.substring(0,lengthDisplayText-2);	
+				case ':': displayText = displayText.substring(0,lengthDisplayText-2);	
 					break;
-				case '^': displayText=displayText.substring(0,lengthDisplayText-1);
+				case '^': displayText = displayText.substring(0,lengthDisplayText-1);
 					break;
-					
+				case '<': displayText = displayText.substring(0,lengthDisplayText-4);
+					break;
+				
 				//to remove other characters like numbers or operators
 				default: displayText=displayText.substring(0,lengthDisplayText-1);
 				
@@ -88,8 +90,6 @@ function clearLast(){
 		document.getElementById("displayBox").value = displayText;
 	}catch(err)
 	{
-	document.getElementById("wantsPadding").innerHTML = err;
-	
-	//document.write("error in clearlast");
+		document.getElementById("wantsPadding").innerHTML = err;
 	}
 }

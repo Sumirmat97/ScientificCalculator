@@ -15,8 +15,11 @@ function put(character)
 	
 	if(character == 'N')
 		displayText += '-';
-	else
-		displayText += character;
+	else if(character == 'pi')
+		displayText += 3.14159;
+	else if(character == 'EXP')
+		displayText += 2.71828;
+	else		displayText += character;
 	
 	if(character != "!" && character.length === 1 )
 	{
@@ -67,8 +70,18 @@ function callMethod(key)
 			case 11: put("^(");
 					functionText += "^(";
 				break;
-			case "ans": put("ans");
-					functionText += ans;		
+			case 12: put("sqrt(");
+					 functionText += "<(";
+				break;
+			case "E": put("EXP");
+					functionText += 2.71828;
+				break;
+			case "ans": put("Ans");
+					functionText += ans;
+				break;
+			case "pi": put("pi");
+					functionText += 3.14159;
+				break;
 		}
 }
 

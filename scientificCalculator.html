@@ -12,17 +12,8 @@
 				
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 		
 		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 			
@@ -86,11 +77,12 @@
 						
 						<div class="row">
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default" onclick="callMethod(7)" >log<sub>10</sub> </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(12)" > &#8730; </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick = "callMethod(8)"> ln </button>
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod(11)" > x<sup>y</sup> </button>
 							</div>
+							
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-md" onclick="callMethod(9)"> e<sup>x</sup> </button>
 							</div>
@@ -98,18 +90,27 @@
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-md" onclick="callMethod(10)" > x! </button>
 							</div>
+							
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-default btn-md" onclick="callMethod(11)" > x<sup>y</sup> </button>
+								<button type="button" class="btn btn-default btn-md" onclick = "callMethod(8)"> ln </button>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-warning btn-md" onclick="callMethod('ans')" > Ans</button>
+								<button type="button" class="btn btn-default" onclick="callMethod(7)" >log </button>
 							</div>
-						
 						</div>
 						
 						
 						<div class="row" ><br/> </div>
 						<div class="row" >
+						
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod('E')" > E </button>
+							</div>
+							
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-default btn-md" onclick="callMethod('pi')" >&#960; </button>
+							</div>
+							
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-md" onclick="put('(')"> ( </button>
 							</div>
@@ -119,6 +120,9 @@
 							
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-danger btn-md" onclick="clearLast()"> C </button>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-info btn-md" onclick="allClear()" > AC </button>
 							</div>
 							
 						</div>
@@ -143,9 +147,12 @@
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-block" onclick="put('/')" > / </button>
 							</div>
-							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-info btn-md" onclick="allClear()" > AC </button>
+							<div class="col-md-2 col-sm-2 col-xs-2" > 
+								<button type="button" class="btn btn-default " onclick="put('N')" >-ve </button>	
 							</div>
+							
+							
+
 						</div>
 						
 						<div class="row"> <br /> </div>
@@ -166,8 +173,8 @@
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-block" onclick="put('-')" > - </button>
 							</div>
-							<div class="col-md-2 col-sm-2 col-xs-2" > 
-								<button type="button" class="btn btn-default " onclick="put('N')" >-ve </button>	
+							<div class="col-md-2 col-sm-2 col-xs-2">
+								<button type="button" class="btn btn-success btn-md" style="font-size: 15px; text-align:center;" onclick="functionText+=')';compute();" > &nbsp; = &nbsp; </button>	
 							</div>
 						</div>
 						
@@ -188,8 +195,9 @@
 							<div class="col-md-2 col-sm-2 col-xs-2">
 								<button type="button" class="btn btn-default btn-block" onclick="put('.')" > . </button>	
 							</div>
+							
 							<div class="col-md-2 col-sm-2 col-xs-2">
-								<button type="button" class="btn btn-success btn-md" onclick="functionText+=')';compute();" >&#8626; </button>	
+								<button type="button" class="btn btn-warning btn-md" onclick="callMethod('ans')" > Ans</button>
 							</div>
 							
 						</div>

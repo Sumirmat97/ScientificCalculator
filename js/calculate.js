@@ -46,6 +46,8 @@ function calculatePop1(operation,resultStack)
 			case '|': resultStack.push(Math.log(val)); break;
 			case ':': resultStack.push(Math.exp(val));break;
 			case ',': resultStack.push(factorial(val));break;
+			case '<': resultStack.push(Math.sqrt(val));break;
+			
 		}
 	
 	}catch(err)
@@ -112,7 +114,9 @@ function calculate(exp)
 		resultString = ans.toString();
 		displayText = resultString;
 		
-		if(ans < 0)
+		if(ans == 0)
+			allClear();
+		else if(ans < 0)
 			functionText = "(N" + resultString.substring(1); //remove - sign from the result and put N in its place
 		else
 			functionText = "(" + resultString; 
@@ -127,6 +131,12 @@ function calculate(exp)
 function compute()
 {	
 	try{
+			if(functionText == ")")
+			{
+				allClear();
+				return;
+			}
+		
 		//debugger;
 			var stck = [];
 			var postfixExp = "";
