@@ -40,7 +40,7 @@ function calculatePop1(operation,resultStack)
 			case '`': resultStack.push(Math.cos(val)); break;
 			case '@': resultStack.push(Math.tan(val)); break;
 			case '#': resultStack.push(Math.asin(val)); break;
-			case '$': resultStack.push(Math.acos(val));	break; 
+			case '$': resultStack.push(Math.acos(val));break; 
 			case '%': resultStack.push(Math.atan(val)); break;
 			case '_': resultStack.push(Math.log(val)/Math.log(10)); break;
 			case '|': resultStack.push(Math.log(val)); break;
@@ -68,7 +68,7 @@ function calculatePop2(operator,resultStack)
 			case "-": resultStack.push(val2 - val1); break;
 			case "*": resultStack.push(val2 * val1); break;
 			case "/": resultStack.push(val2 / val1); break;
-			case "^": resultStack.push(Math.pow(val2,val1)); break;
+			case "^": resultStack.push((Math.pow(val2,val1)).toFixed(7)); break;
 		}
 	}
 	catch(err)
@@ -103,7 +103,7 @@ function calculate(exp)
 				}
 			}
 			else
-				resultStack.push(arr[i]);
+				resultStack.push(parseFloat(arr[i]));
 		}
 		
 		ans = resultStack.pop()
@@ -124,7 +124,7 @@ function calculate(exp)
 		
 	}catch(err)
 	{
-		document.getElementById("displayBox").value = "Error";
+		document.getElementById("displayBox").value = err;
 	}
 }
 
@@ -202,7 +202,7 @@ function compute()
 				postfixExp += stck.pop() + " ";
 			}
 			
-			//document.getElementById("wantsPadding").innerHTML += (functionText+"::"+postfixExp);
+			document.getElementById("wantsPadding").innerHTML += (functionText+"::"+postfixExp);
 			calculate(postfixExp);
 			
 		}catch(err){

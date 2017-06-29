@@ -16,9 +16,9 @@ function put(character)
 	if(character == 'N')
 		displayText += '-';
 	else if(character == 'pi')
-		displayText += 3.14159;
+		displayText += (Math.PI);
 	else if(character == 'EXP')
-		displayText += 2.71828;
+		displayText += (Math.E);
 	else		displayText += character;
 	
 	if(character != "!" && character.length === 1 )
@@ -74,13 +74,13 @@ function callMethod(key)
 					 functionText += "<(";
 				break;
 			case "E": put("EXP");
-					functionText += 2.71828;
+					functionText += (Math.E);
 				break;
 			case "ans": put("Ans");
 					functionText += ans;
 				break;
 			case "pi": put("pi");
-					functionText += 3.14159;
+					functionText += (Math.PI);
 				break;
 		}
 }
