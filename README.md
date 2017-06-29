@@ -6,6 +6,3 @@ A scientific calulator made in HTML and JavaScript.
 ## How To Set Up ##
 * Download the project.
 * Run the file scientificCalculator.html
-
-## To Do ##
-Make it look better
