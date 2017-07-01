@@ -202,7 +202,7 @@ function compute()
 				postfixExp += stck.pop() + " ";
 			}
 			
-			document.getElementById("wantsPadding").innerHTML += (functionText+"::"+postfixExp);
+			//document.getElementById("wantsPadding").innerHTML += (functionText+"::"+postfixExp);
 			calculate(postfixExp);
 			
 		}catch(err){

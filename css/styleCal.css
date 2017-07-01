@@ -1,7 +1,10 @@
 #wantsPadding{
-				padding:80px;
-				color:red;		
-			}
+				padding:70px;
+				color: #ff1331;
+				font-family: "Arial", Helvetica, sans-serif;		
+				text-align:center;
+				font-size: 25px;
+				}
 #calcBox{
 		border: 1px solid black;
 		padding-right: 30px;
