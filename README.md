@@ -1,5 +1,5 @@
 # ScientificCalculator
-A scientific calulator made in HTML and JavaScript.
+A scientific calculator made in HTML and JavaScript.
 
 * Bootstrap framework is also used.
 
